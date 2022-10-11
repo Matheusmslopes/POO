@@ -32,7 +32,11 @@ public class oraculo {
         return guerreiro.nome;
     }
     int loadLevel1(){
-       SecretNumber = Main.aleatorio(1,100);
+        
+        int SecretNumber,tent, Vidas = 0, vidasRest;
+        Scanner sc = new Scanner(System.in);
+        
+        SecretNumber = Atividade01.aleatorio(1,100);
         vidasRest = Vidas;
         System.out.println(SecretNumber);
 
