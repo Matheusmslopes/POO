@@ -32,8 +32,29 @@ public class oraculo {
         return guerreiro.nome;
     }
     int loadLevel1(){
-        Nvidas--;
-        return 0;
+       SecretNumber = Main.aleatorio(1,100);
+        vidasRest = Vidas;
+        System.out.println(SecretNumber);
+
+    do
+    {
+      System.out.print("Numero secreto é [1, 100]: ");
+      tent = sc.nextInt();
+      vidasRest--;
+      if (tent > SecretNumber)
+        System.out.println("O número secreto é menor.");
+      else if (tent == SecretNumber)
+      {
+        System.out.println("Você acertou");
+      }
+      else
+        System.out.println("O número secreto é maior.");
+      
+    } while(tent != SecretNumber && vidasRest > 0);
+    
+    return SecretNumber;
+
+    //Oraculo.loadLevel2();
     }
     int loadLevel2(int opcao){
         int NG,NO, resposta,i;
