@@ -24,8 +24,13 @@ public class Atividade01 {
 //        guerreirom.getVidas();
         
         oraculo Oraculom = new oraculo();
+        
         Oraculom.guerreiro = guerreirom;
         guerreirom.Oraculo = Oraculom;
+        
+        Oraculom.Nvidas = Oraculom.guerreiro.Vida;
+        
+        //Oraculom.setVidas();
         
         System.out.println("Escreva o nome do Oráculo: ");
         Scanner teclado = new Scanner(System.in);
@@ -33,8 +38,8 @@ public class Atividade01 {
         Oraculom.setNome(nome);
       
         Oraculom.prologoIntroducao();
-        Oraculom.loadLevel2(0);
-
+        Oraculom.loadLevel2(0);    
+        
     }
     public static int aleatorio(int minimo, int maximo){
         Random random = new Random();
