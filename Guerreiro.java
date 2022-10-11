@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package atividade01;
+import java.util.Scanner;
 
 /**
  *
@@ -22,7 +23,7 @@ public class Guerreiro {
     
     void setNome(){
         System.out.println("Informe o nome do Guerreiro: ");
-        java.util.Scanner tecladoG = new java.util.Scanner(System.in);
+        Scanner tecladoG = new Scanner(System.in);
         nome = tecladoG.next();
     }
     int getVidas(){
