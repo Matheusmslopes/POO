@@ -38,7 +38,7 @@ public class Atividade01 {
         Oraculom.setNome(nome);
       
         Oraculom.prologoIntroducao();
-        Oraculom.loadLevel2(0);    
+        Oraculom.loadLevel1();    
         
     }
     public static int aleatorio(int minimo, int maximo){
