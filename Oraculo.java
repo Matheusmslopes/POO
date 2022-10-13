@@ -15,7 +15,7 @@ public class oraculo {
     String Nome, VidaEx,pedidoDeM;
     boolean resp;
     Guerreiro guerreiro;
-    int nivel,escolhaM, Nvidas;
+    int nivel,escolhaM, Nvidas,miser;
     
     //Nvidas = guerreiro.Vida
 
@@ -40,70 +40,106 @@ public class oraculo {
         System.out.println("Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " com Quantidade de Vidas: " + guerreiro.getVidas());
         return guerreiro.nome;
     }
-    int loadLevel1()
-    {
-        int SecretNumber,tent, Vidas = 0, vidasRest;
+    
+    int loadLevel1(){
+            
+        nivel = 1;   
+        int SecretNumber,tent;
         Scanner sc = new Scanner(System.in);
     
-    
+        System.out.println("------------ LEVEL 1 ---------------");
         SecretNumber = Atividade01.aleatorio(1,100);
-        vidasRest = Vidas;
-        System.out.println(SecretNumber);
+        Nvidas = guerreiro.Vida;
+        System.out.println("Numero sorteado é "+SecretNumber);
 
         do
         {
             System.out.print("Numero secreto é [1, 100]: ");
             tent = sc.nextInt();
-            vidasRest--;
-            if (tent > SecretNumber)
+            
+            if (tent > SecretNumber){
                 System.out.println("O número secreto é menor.");
-            else if (tent == SecretNumber)
+                Nvidas--;
+            }   
+            else if (tent == SecretNumber){
                 System.out.println("Você acertou");
-            else
+            }    
+            else{
                 System.out.println("O número secreto é maior.");
-      
-        } while(tent != SecretNumber && vidasRest > 0);
-    
+                Nvidas--;
+            }
+        } while(tent != SecretNumber && Nvidas > 0);
+        
+        if(tent == SecretNumber){
+            System.out.println("------------ LEVEL 2 ---------------");
+            System.out.println("2-PAR ou 1-IMPAR: ");
+            Scanner es = new Scanner(System.in);
+            escolhaM = es.nextInt();
+            loadLevel2(escolhaM);
+        }else{
+            prologoPerdedor();
+        }
+        
         return SecretNumber;
-    //Oraculo.loadLevel2();
     }
-    
     int loadLevel2(int opcao){
         nivel = 2;
-        System.out.println("------------ LEVEL 2 ---------------");
-       
-        int NG,NO, resposta,i, resultado,escolha;
+        System.out.println("Nvidas = "+Nvidas);
+        int NG,NO, resposta = 0 ,i, resultado,escolha;
+        
+       // do{
+        resposta=0;
         NG = Atividade01.aleatorio(0, 5);
         NO = Atividade01.aleatorio(0, 5);
         resposta = NG + NO;
         // Checando o numero para vê se a resposta bate
         
             if (resposta % 2 == 0){
-                System.out.println("O número sortedo é PAR = 2");
+                System.out.println("Soma dos números sortedos é PAR (2)");
                 resultado = 2;
             }
             else {
-                System.out.println("O número sorteado é IMPAR = 1");
+                System.out.println("Soma dos números sorteados é IMPAR (1)");
                 resultado = 1;
             }
         if(opcao == resultado){
             prologoVencedor();
+            //break;
         }
         else{
+            
+            Nvidas = Nvidas - 1;
             for(i = Nvidas; i >= 0; i--){
+               System.out.println("Nvidas = "+Nvidas);
+                resposta=0;
+                NG = Atividade01.aleatorio(0, 5);
+                NO = Atividade01.aleatorio(0, 5);
+                resposta = NG + NO;
+                // Checando o numero para vê se a resposta bate
+
+                    if (resposta % 2 == 0){
+                        System.out.println("Soma dos números sortedos é PAR (2)");
+                        resultado = 2;
+                    }
+                    else {
+                        System.out.println("Soma dos números sorteados é IMPAR (1)");
+                        resultado = 1;
+                    }
                 System.out.println("2-PAR ou 1-IMPAR: ");
                 Scanner es = new Scanner(System.in);
                 escolha = es.nextInt();
                 if (escolha == resultado){
                     prologoVencedor();
+                    break;
                 }
                 else if(Nvidas == 0){
                   VidaEx = guerreiro.vidaExtra();
-                    if(VidaEx == "sim"){
+                    System.out.println("Vida Extra "+VidaEx);
+                    if("sim".equals(VidaEx)){
+                        System.out.println("ENTROU");
                         Nvidas++;
                     }
                     else {
-
                         prologoPerdedor();
                         break;
                     }
@@ -113,45 +149,65 @@ public class oraculo {
                 }
             }
         }
-        
+       // }while (resposta != resultado);
         
         return 0;
     }
     String prologoVencedor(){
-        System.out.println("---------------------------------");
+        
+        System.out.println("--------------- FIM ------------------");
         guerreiro.getNome();
         System.out.println("Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " VENCEDOR");
         return guerreiro.nome;  
     }
        
     String prologoPerdedor(){
-        System.out.println("Escreva sua frase de Misericordia");
-        Scanner palavra = new Scanner(System.in);
-        pedidoDeM = palavra.next(pedidoDeM);
-        resp = this.decidirVidaExtra(pedidoDeM);
+        if(miser == 0){
+           miser++;
+           System.out.println("Escreva sua frase de Misericordia: ");
+           Scanner palavra = new Scanner(System.in);
+           pedidoDeM = palavra.next();
+           decidirVidaExtra(pedidoDeM); 
+           
+        }
+        else{
+           resp = this.decidirVidaExtra(pedidoDeM);
+           System.out.println("RESP = "+resp);
+           if (resp == false){
+                System.out.println("---------------------------------");
+                guerreiro.getNome();
+                System.out.println("Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " PERDEDOR");
+                return guerreiro.nome;
+            }else{
+                if(nivel == 1){
+                    Nvidas++;
+                    loadLevel1();
+                }else{
+                    Nvidas++;
+                    System.out.println("2-PAR ou 1-IMPAR: ");
+                    Scanner es = new Scanner(System.in);
+                    escolhaM = es.nextInt();
+                    loadLevel2(escolhaM);
+                }
+            } 
+        }
         
-        if (resp == false){
-            System.out.println("---------------------------------");
-            guerreiro.getNome();
-            System.out.println("Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " PERDEDOR");
-            return guerreiro.nome;
-        }
-        if(nivel == 1){
-            loadLevel1();
-        }else{
-            System.out.println("2-PAR ou 1-IMPAR: ");
-            Scanner es = new Scanner(System.in);
-            escolhaM = es.nextInt();
-            loadLevel2(escolhaM);
-        }
+        
+        
         return null;//retorna a level 2
         
     }
     boolean decidirVidaExtra(String misericordia){
+        
         StringTokenizer dve = new StringTokenizer(pedidoDeM," ");
-        System.out.println("Total number of Tokens: "+dve.countTokens());    
-        if(dve.countTokens() == 5){
+        int contador= dve.countTokens();
+        System.out.println("Total number of Tokens: "+ contador);
+        while (dve.hasMoreElements()){    
+            System.out.println(dve.nextToken());    
+        }    
+        if(contador >= 5){
            Nvidas++;
+           prologoPerdedor();
            return true;
         }
          return false;
