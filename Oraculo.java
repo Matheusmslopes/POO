@@ -40,11 +40,34 @@ public class oraculo {
         System.out.println("Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " com Quantidade de Vidas: " + guerreiro.getVidas());
         return guerreiro.nome;
     }
-    int loadLevel1(){
-        nivel = 1;
-        Nvidas--;
-        return 0;
+    int loadLevel1()
+    {
+        int SecretNumber,tent, Vidas = 0, vidasRest;
+        Scanner sc = new Scanner(System.in);
+    
+    
+        SecretNumber = Atividade01.aleatorio(1,100);
+        vidasRest = Vidas;
+        System.out.println(SecretNumber);
+
+        do
+        {
+            System.out.print("Numero secreto é [1, 100]: ");
+            tent = sc.nextInt();
+            vidasRest--;
+            if (tent > SecretNumber)
+                System.out.println("O número secreto é menor.");
+            else if (tent == SecretNumber)
+                System.out.println("Você acertou");
+            else
+                System.out.println("O número secreto é maior.");
+      
+        } while(tent != SecretNumber && vidasRest > 0);
+    
+        return SecretNumber;
+    //Oraculo.loadLevel2();
     }
+    
     int loadLevel2(int opcao){
         nivel = 2;
         System.out.println("------------ LEVEL 2 ---------------");
