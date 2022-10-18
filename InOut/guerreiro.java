@@ -49,3 +49,11 @@ public class Guerreiro {
     }
     
 }
+
+//Icon ic = new ImageIcon("knight.png");
+        
+        
+        //String nome  = JOptionPane.showInputDialog (null, Oraculom.Nome , "Insira o nome do Oraculo", 
+											  // JOptionPane.QUESTION_MESSAGE,ic,null,null).toString();
+
+
