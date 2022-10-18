@@ -23,7 +23,7 @@ public class Atividade01 {
         guerreirom.setNome();
 //        guerreirom.getVidas();
         
-        oraculo Oraculom = new oraculo();
+        Oraculo Oraculom = new Oraculo();
         
         Oraculom.guerreiro = guerreirom;
         guerreirom.Oraculo = Oraculom;
