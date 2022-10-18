@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Guerreiro {
     String nome,vidaR;
     int Vida,vidaS;
-    oraculo Oraculo;
+    Oraculo Oraculo;
 
     public Guerreiro(String nome, int Vida) {
         this.nome = nome;
