@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
  *
  * @author alunolab08
  */
-public class oraculo {
+public class Oraculo {
     
     boolean resp;
     Guerreiro guerreiro;
@@ -17,10 +17,10 @@ public class oraculo {
     String Nome, VidaEx,pedidoDeM;
     
     
-    public oraculo() {
+    public Oraculo() {
     }
     
-    public oraculo(String Nome) {
+    public Oraculo(String Nome) {
         this.Nome = Nome;
     }
     
