@@ -5,6 +5,9 @@
 package atividade01;
 import java.util.Scanner;
 import java.util.StringTokenizer; 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 /**
  *
  * @author alunolab08
@@ -14,15 +17,16 @@ public class Oraculo {
     boolean resp;
     Guerreiro guerreiro;
     int nivel,escolhaM, Nvidas,miser = 0;
-    String Nome, VidaEx,pedidoDeM;
+    String Nome, VidaEx,pedidoDeM, palavra;
     
     
     
     public Oraculo() {
     }
     
-    public Oraculo(String Nome) {
+    public Oraculo(String Nome, String palavra) {
         this.Nome = Nome;
+        this.palavra = palavra;
     }
     
     void setNome(String Nome){
@@ -38,10 +42,8 @@ public class Oraculo {
     
     String prologoIntroducao(){
         InOut.MsgSemIcone("JOGADORES", "INTRODUÇÃO");
-       // System.out.println("--------------  INTRODUCAO  --------------");
         guerreiro.getNome();
         InOut.MsgSemIcone("JOGADORES", "Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " possuem " + guerreiro.getVidas() + " vidas");
-       // System.out.println("Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " com Quantidade de Vidas: " + guerreiro.getVidas());
         return guerreiro.nome;
     }
     
@@ -51,7 +53,6 @@ public class Oraculo {
         Scanner sc = new Scanner(System.in);
         
         InOut.MsgSemIcone(" ", "--------------  LEVEL 1  --------------");
-        //System.out.println("--------------  LEVEL 1  --------------");
         SecretNumber = Atividade01.aleatorio(1,100);
         //System.out.println("Numero sorteado é "+SecretNumber);
 
@@ -60,9 +61,8 @@ public class Oraculo {
             System.out.print("Numero secreto é [1, 100]: ");
             tent = sc.nextInt();
             if(tent < 1 || tent >100){
-                System.out.println("-----  ERRO  -----");
-                System.out.println("Escreva o numero novamente");
-                System.out.println("------------------");
+                InOut.MsgDeErro("Jogadores", "-----  ERRO  -----");
+                InOut.MsgDeInformacao(" ", "Escreva o numero novamente");
             }
             else{
                 if(tent != SecretNumber){
@@ -72,22 +72,22 @@ public class Oraculo {
                     }
                     else{
                         if (tent > SecretNumber){
-                            System.out.println("O número secreto é menor.");
+                            InOut.MsgDeInformacao(" ", "O número secreto é menor.");
                         }       
                         else{
-                            System.out.println("O número secreto é maior.");
+                            InOut.MsgDeInformacao(" ", "O número secreto é maior.");
                         } 
                     }
                 }
                 else{
-                    System.out.println(" ---------- VOCE ACERTOU O NUMERO ---------- ");
+                    InOut.MsgSemIcone("Jogadores", " ---------- VOCE ACERTOU O NUMERO ---------- ");
                     break;
                 }
             }  
         } while(tent != SecretNumber && Nvidas > 0);
         
         if(tent == SecretNumber){
-            System.out.println("--------------  LEVEL 2  --------------");
+            InOut.MsgSemIcone(" ", "--------------  LEVEL 2  --------------");
             //TRATAMENTO DE ERRO
             while(escolhaM != 2 || escolhaM != 1){
                 System.out.println("2-PAR ou 1-IMPAR: ");
@@ -98,9 +98,8 @@ public class Oraculo {
                     break;
                 }
                 else{
-                    System.out.println("-----  ERRO  -----");
-                    System.out.println("O numero digitado nao existe no banco de dados");
-                    System.out.println("------------------");
+                    InOut.MsgDeErro("Jogadores", "-----  ERRO  -----");
+                    InOut.MsgDeInformacao(" ","O numero digitado nao existe no banco de dados");
                 }
             }    
         }else
@@ -169,9 +168,8 @@ public class Oraculo {
                 escolha = es.nextInt();
                 //TRATAMENTO DE ERRO
                 if(escolha > 2 || escolha < 1){
-                    System.out.println("-----  ERRO  -----");
-                    System.out.println("Escreva o numero novamente");
-                    System.out.println("------------------");
+                    InOut.MsgDeErro("Jogadores", "-----  ERRO  -----");
+                    InOut.MsgDeInformacao(" ","Escreva o número novamente");
                 }
                 else{
                     if (escolha == resultado){
@@ -188,22 +186,24 @@ public class Oraculo {
     }
     
     String prologoVencedor(){
-        System.out.println("--------------  FIM  --------------");
+        InOut.MsgSemIcone(" ", "--------------  FIM  --------------");
         guerreiro.getNome();
-        System.out.println("Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " VENCEDOR");
+        InOut.MsgSemIcone(" ","Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " VENCEDOR");
         return guerreiro.nome;  
     }
        
     String prologoPerdedor(){
-        System.out.println("ENTROU PERDEDOR");
-        System.out.println("miser = "+miser);
+       // InOut.MsgSemIcone(" ", "ENTROU PERDEDOR");
+        // System.out.println("miser = "+miser);
         switch (miser) {
             case 0 -> {
-                System.out.println("--------------- PEDIDO DE MISERICORDIA ---------------");
+                InOut.MsgDeInformacao(" ","PEDIDO DE MISERICORDIA");
+                Icon ic3 = new ImageIcon("misericordia.png");
+                pedidoDeM = JOptionPane.showInputDialog (null, palavra , "Escreva sua frase de Misericordia: ", JOptionPane.QUESTION_MESSAGE, ic3, null, null).toString();
                 miser = 1;
-                System.out.println("Escreva sua frase de Misericordia: ");
-                Scanner palavra = new Scanner(System.in);
-                pedidoDeM = palavra.nextLine();
+//                System.out.println("Escreva sua frase de Misericordia: ");
+//                Scanner palavra = new Scanner(System.in);
+//                pedidoDeM = palavra.nextLine();
                 //System.out.println("PEDIDOM = "+pedidoDeM);
                 decidirVidaExtra(pedidoDeM);
             }
@@ -211,9 +211,9 @@ public class Oraculo {
                 miser = 2;
                 //System.out.println("RESP = "+resp);
                 if (resp == false){
-                    System.out.println("--------------  FIM  --------------");
+                    InOut.MsgSemIcone(" ", "FIM, voce perdeu!");
                     guerreiro.getNome();
-                    System.out.println("Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " PERDEDOR");
+                    InOut.MsgSemIcone(" ", "Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " PERDEDOR");
                     return guerreiro.nome;
                 }
                 else{
@@ -230,9 +230,9 @@ public class Oraculo {
                 }
             }
             default -> {
-                System.out.println("--------------  FIM  --------------");
+                InOut.MsgSemIcone(" ", "--------------  FIM  --------------");
                 guerreiro.getNome();
-                System.out.println("Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " PERDEDOR");
+                InOut.MsgSemIcone(" ","Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " PERDEDOR");
                 return guerreiro.nome;
             }
         }
