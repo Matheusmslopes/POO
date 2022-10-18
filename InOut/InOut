@@ -26,8 +26,7 @@ public class InOut {
 	public static String leString (String frase){
 		String Entrada;
 		
-		Entrada = JOptionPane.showInputDialog (null, frase, "Entrada de dados", 
-											   JOptionPane.QUESTION_MESSAGE);
+		Entrada = JOptionPane.showInputDialog (null, frase, "Entrada de dados", JOptionPane.QUESTION_MESSAGE,null ,null,null).toString();
 		return Entrada;
 	}
 	
@@ -114,6 +113,7 @@ public class InOut {
 		
 		do{
 			try{
+                            
 				Entrada = JOptionPane.showInputDialog (null, frase, "Entrada de dados", 
 						   								JOptionPane.QUESTION_MESSAGE);
 				num = Integer.parseInt(Entrada);
