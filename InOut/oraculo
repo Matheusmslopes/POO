@@ -17,16 +17,17 @@ public class Oraculo {
     boolean resp;
     Guerreiro guerreiro;
     int nivel,escolhaM, Nvidas,miser = 0;
-    String Nome, VidaEx,pedidoDeM, palavra;
+    String Nome, VidaEx,pedidoDeM, palavra, ent, Entrada;
     
     
     
     public Oraculo() {
     }
     
-    public Oraculo(String Nome, String palavra) {
+    public Oraculo(String Nome, String palavra, String ent) {
         this.Nome = Nome;
         this.palavra = palavra;
+        this.ent = ent;
     }
     
     void setNome(String Nome){
@@ -47,6 +48,9 @@ public class Oraculo {
         return guerreiro.nome;
     }
     
+        Icon ic4 = new ImageIcon("qMark.png");
+        Icon ic5 = new ImageIcon("loteria.png");
+        
     int loadLevel1(){      
         nivel = 1;   
         int SecretNumber,tent;
@@ -58,8 +62,11 @@ public class Oraculo {
 
         do{
             //System.out.println("Nvidas = "+Nvidas);
-            System.out.print("Numero secreto é [1, 100]: ");
-            tent = sc.nextInt();
+//            System.out.print("Numero secreto é [1, 100]: ");
+//            tent = sc.nextInt();
+            Entrada = JOptionPane.showInputDialog (null, "Numero secreto entre [1, 100]:", "vidas restantes: " + Nvidas, JOptionPane.QUESTION_MESSAGE, ic4 ,null,null).toString();
+            tent = Integer.parseInt(Entrada);
+                                
             if(tent < 1 || tent >100){
                 InOut.MsgDeErro("Jogadores", "-----  ERRO  -----");
                 InOut.MsgDeInformacao(" ", "Escreva o numero novamente");
@@ -90,9 +97,13 @@ public class Oraculo {
             InOut.MsgSemIcone(" ", "--------------  LEVEL 2  --------------");
             //TRATAMENTO DE ERRO
             while(escolhaM != 2 || escolhaM != 1){
-                System.out.println("2-PAR ou 1-IMPAR: ");
-                Scanner es = new Scanner(System.in);
-                escolhaM = es.nextInt();
+                
+                Entrada = JOptionPane.showInputDialog (null, "2-PAR ou 1-IMPAR: ", "vidas restantes: " + Nvidas, JOptionPane.QUESTION_MESSAGE, ic5 ,null,null).toString();
+                escolhaM = Integer.parseInt(Entrada);
+                                
+//                System.out.println("2-PAR ou 1-IMPAR: ");
+//                Scanner es = new Scanner(System.in);
+//                escolhaM = es.nextInt();
                 if(escolhaM == 2 || escolhaM == 1){
                     loadLevel2(escolhaM);
                     break;
@@ -163,12 +174,14 @@ public class Oraculo {
                 }
                 //-----
                 // perguntando ao guerreiro oque ele quer ser
-                System.out.println("2-PAR ou 1-IMPAR: ");
-                Scanner es = new Scanner(System.in);
-                escolha = es.nextInt();
+                Entrada = JOptionPane.showInputDialog (null, "2-PAR ou 1-IMPAR: ", "vidas restantes: " + Nvidas , JOptionPane.QUESTION_MESSAGE, ic5 ,null,null).toString();
+                escolha = Integer.parseInt(Entrada);
+//                System.out.println("2-PAR ou 1-IMPAR: ");
+//                Scanner es = new Scanner(System.in);
+//                escolha = es.nextInt();
                 //TRATAMENTO DE ERRO
                 if(escolha > 2 || escolha < 1){
-                    InOut.MsgDeErro("Jogadores", "-----  ERRO  -----");
+                    InOut.MsgDeErro("Jogadores", "   ERRO   ");
                     InOut.MsgDeInformacao(" ","Escreva o número novamente");
                 }
                 else{
@@ -185,10 +198,14 @@ public class Oraculo {
         return 0;
     }
     
+    Icon ic6 = new ImageIcon("trofeu.png");
+    Icon ic7 = new ImageIcon("game-over.png");
+    
     String prologoVencedor(){
         InOut.MsgSemIcone(" ", "--------------  FIM  --------------");
         guerreiro.getNome();
-        InOut.MsgSemIcone(" ","Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " VENCEDOR");
+        JOptionPane.showMessageDialog(null, "Oráculo:" + Nome + " e o Guerreiro: " + guerreiro.nome + " VENCEDOR", " ", JOptionPane.INFORMATION_MESSAGE, ic6);
+//        InOut.MsgSemIcone(" ","Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " VENCEDOR");
         return guerreiro.nome;  
     }
        
@@ -213,7 +230,8 @@ public class Oraculo {
                 if (resp == false){
                     InOut.MsgSemIcone(" ", "FIM, voce perdeu!");
                     guerreiro.getNome();
-                    InOut.MsgSemIcone(" ", "Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " PERDEDOR");
+                    JOptionPane.showMessageDialog(null,"Oráculo:" + Nome + " e o Guerreiro: " + guerreiro.nome + " PERDEDOR", " ", JOptionPane.INFORMATION_MESSAGE, ic7);
+//                    InOut.MsgSemIcone(" ", "Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " PERDEDOR");
                     return guerreiro.nome;
                 }
                 else{
@@ -222,9 +240,11 @@ public class Oraculo {
                         loadLevel1();
                     }else{
                         Nvidas++;
-                        System.out.println("2-PAR ou 1-IMPAR: ");
-                        Scanner es = new Scanner(System.in);
-                        escolhaM = es.nextInt();
+                        Entrada = JOptionPane.showInputDialog (null, "2-PAR ou 1-IMPAR: ", ent, JOptionPane.QUESTION_MESSAGE, ic5 ,null,null).toString();
+                        escolhaM = Integer.parseInt(Entrada);
+//                        System.out.println("2-PAR ou 1-IMPAR: ");
+//                        Scanner es = new Scanner(System.in);
+//                        escolhaM = es.nextInt();
                         loadLevel2(escolhaM);
                     }
                 }
@@ -232,7 +252,8 @@ public class Oraculo {
             default -> {
                 InOut.MsgSemIcone(" ", "--------------  FIM  --------------");
                 guerreiro.getNome();
-                InOut.MsgSemIcone(" ","Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " PERDEDOR");
+                JOptionPane.showMessageDialog(null,"Oráculo:" + Nome + " e o Guerreiro: " + guerreiro.nome + " PERDEDOR", " ", JOptionPane.INFORMATION_MESSAGE, ic7);
+//                InOut.MsgSemIcone(" ","Oráculo: " + Nome +" e o Guerreiro: " + guerreiro.nome +  " PERDEDOR");
                 return guerreiro.nome;
             }
         }
