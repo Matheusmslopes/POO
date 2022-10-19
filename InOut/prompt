@@ -5,7 +5,7 @@
 package atividade01;
 
 import java.util.Random;
-import java.util.Scanner;
+//import java.util.Scanner;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -35,9 +35,8 @@ public class Atividade01 {
         Oraculom.Nvidas = Oraculom.guerreiro.Vida;
         
         //Oraculom.setVidas();
-        
-        String nome  = JOptionPane.showInputDialog (null, Oraculom.Nome , "Insira o nome do Oraculo", 
-											   JOptionPane.QUESTION_MESSAGE, ic2, null, null).toString();
+//      Icon ic2 = new ImageIcon("oraculo.png");
+        String nome  = JOptionPane.showInputDialog (null, Oraculom.Nome , "Insira o nome do Oraculo", JOptionPane.QUESTION_MESSAGE, ic2, null, null).toString();
 //        System.out.println("Escreva o nome do Oráculo: ");
 //        Scanner teclado = new Scanner(System.in);
 //        String nome = teclado.next();
