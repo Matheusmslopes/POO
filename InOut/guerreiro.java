@@ -29,9 +29,8 @@ public class Guerreiro {
 //        System.out.println("Informe o nome do Guerreiro: ");
 //        this.nome = InOut.leString(nome);
         //this.nome = nome;
-	nome = JOptionPane.showInputDialog (null, nome, "Entrada de dados", JOptionPane.QUESTION_MESSAGE, ic ,null,null).toString();
-        //this.nome = JOptionPane.showInputDialog (null, nome , "Insira o nome do Guerreiro", 
-			//								   JOptionPane.QUESTION_MESSAGE);
+	nome = JOptionPane.showInputDialog (null, nome, "Insira o nome do Guerreiro", JOptionPane.QUESTION_MESSAGE, ic ,null,null).toString();
+        //this.nome = JOptionPane.showInputDialog (null, nome , "Insira o nome do Guerreiro", JOptionPane.QUESTION_MESSAGE);
         //Scanner tecladoG = new Scanner(System.in);
         //nome = tecladoG.next();
     }
@@ -54,8 +53,3 @@ public class Guerreiro {
     }
     
 }
-
-        
-        
-        //String nome  = JOptionPane.showInputDialog (null, Oraculom.Nome , "Insira o nome do Oraculo", 
-											  // JOptionPane.QUESTION_MESSAGE,ic,null,null).toString();
