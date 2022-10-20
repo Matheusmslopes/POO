@@ -13,16 +13,19 @@ import javax.swing.JOptionPane;
  * @author alunolab08
  */
 public class Guerreiro {
+    /** declaração de variáveis*/
     String nome,vidaR;
     int Vida,vidaS;
     Oraculo Oraculo;
 
+    /** Construtores */ 
     public Guerreiro(String nome, int Vida) {
         this.nome = nome;
         this.Vida = Vida;
     }
     public Guerreiro() {
     }
+    
     Icon ic = new ImageIcon("knight.png");
 		
     void setNome(){
@@ -34,13 +37,21 @@ public class Guerreiro {
         //Scanner tecladoG = new Scanner(System.in);
         //nome = tecladoG.next();
     }
+    /** Método para guardar a quantidade de vidas do jogador*/
     int getVidas(){
         Vida = Oraculo.setVidas();
         return Vida;
     }
+    /** Método para guardar o nome do jogador*/
     String getNome(){
         return nome;
     }
+    
+    /** Função para adicionar uma vida extra para o jogador.
+     * Se a função que está em Oraculo.java, conceder a vida
+     * extra, essa é afunção que vai adicionar a vida extra
+     *  a contagem do jogador.
+     */
     String vidaExtra(){
         vidaS = Atividade01.aleatorio(0, 1);
         if(vidaS == 1){
