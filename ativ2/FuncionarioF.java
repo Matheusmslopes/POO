@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class Funcionario {
     
-    // ATRIBUTOS
+    /** declaração de atributos*/
     private String nome;
     private int matriula;
     Pedido pedido;
@@ -22,8 +22,7 @@ public class Funcionario {
     
     // MÉTODOS PERSONALIZADOS
     
-    
-
+    /** construtores*/
     public Funcionario() {
     }
 
@@ -32,19 +31,28 @@ public class Funcionario {
         this.matriula = matriula;
     }
     
-       
+     /** Função para pegar o nome que será
+     * definido pela função setNome
+     * @return uma string = nome.
+     */
     public String getNome() {
         return nome;
     }
 
+    /** Função para setar o nome do cliente*/
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    /** Função para pegar a matrícula que será
+     * definido pela função setMatricula
+     * @return um INT = matrícula.
+     */
     public int getMatriula() {
         return matriula;
     }
 
+    /** Função para setar a matricula*/
     public void setMatriula(int matriula) {
         this.matriula = matriula;
     }
