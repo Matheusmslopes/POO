@@ -13,14 +13,14 @@ package atividade02;
 import java.util.Scanner;
 
 public class Pedido {
-    
+    /** Declaração de variáveis*/
     private int pedidoId;
     private String dataEmissao;
     private float valorTotalCalculado;
     Loja loja;
     
-    // --------
-
+    
+    /** Construtores*/
     public Pedido() {
     }
 
@@ -31,31 +31,55 @@ public class Pedido {
     }
     
 
-    
+     /**
+     * Função para pegar o ID do pedido
+     * @return um INT que será o ID do pedido
+     */
     public int getPedidoId() {
         return pedidoId;
     }
 
+     /**
+     * Função para setar o ID do pedido
+     * @return um INT que será o ID do pedido
+     */
     public void setPedidoId() {
         pedidoId = pedidoId + 1;
         this.pedidoId = getPedidoId();
         System.out.println("Id do pedido e: " + pedidoId);
     }
 
+     /**
+     * Função para pegar a data, que vai
+     * ser definida pela função setDataEmissao
+     * @return uma string em data
+     */
     public String getDataEmissao() {
         
         return dataEmissao;
     }
 
+     /**
+     * Função para chamar a função data, presente
+     * no Main.
+     */
     public void setDataEmissao() {
         dataEmissao = Atividade02.data();
         this.dataEmissao = dataEmissao;
     }
 
+     /**
+     * Função para pegar o valor total do pedido
+     * @return um float que será o valor final do pedido
+     */
     public float getValorTotalCalculado() {
         return valorTotalCalculado;
     }
 
+    /**
+     * Função para setar o valor total do pedido final 
+     * do cliente
+     */
     public void setValorTotalCalculado(float valorTotalCalculado) {
         this.valorTotalCalculado = valorTotalCalculado;
     }
