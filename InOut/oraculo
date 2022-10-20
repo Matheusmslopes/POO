@@ -13,14 +13,13 @@ import javax.swing.JOptionPane;
  * @author alunolab08
  */
 public class Oraculo {
-    
+    /**declaração de variaveis*/
     boolean resp;
     Guerreiro guerreiro;
     int nivel,escolhaM, Nvidas,miser = 0;
     String Nome, VidaEx,pedidoDeM, palavra, ent, Entrada;
     
-    
-    
+    /** Construtores*/
     public Oraculo() {
     }
     
@@ -30,17 +29,26 @@ public class Oraculo {
         this.ent = ent;
     }
     
+    /** Método para setar do nome */
     void setNome(String Nome){
         this.Nome = Nome;
         //System.out.println("aaa "+Nome);
     }
-
+    
+    /** Método para setar a quantidade de vida
+     * que o guerreiro irá ter, ele chama a função aleatorio
+     * que está presente na Atividade01.java
+     */
     int setVidas(){
         guerreiro.Vida = Atividade01.aleatorio(9, 12);
         Nvidas = guerreiro.Vida;
         return guerreiro.Vida;
     }
     
+    /** Uma introdução para mostrar os nomes do
+     * guerreiro e oráculo e a quantidade de vidas 
+     * q o jogador tem disponível
+     */
     String prologoIntroducao(){
         InOut.MsgSemIcone("JOGADORES", "INTRODUÇÃO");
         guerreiro.getNome();
@@ -51,7 +59,12 @@ public class Oraculo {
         Icon ic4 = new ImageIcon("qMark.png");
         Icon ic5 = new ImageIcon("loteria.png");
         
-    int loadLevel1(){      
+    /** O loadLevel1 vai ser o primeiro desafio do jogador,
+     * ele terá que adivinhar um número entre 0 e 100 com
+     * a quantidade de vida que lhe foi sorteada no
+     *  método setVidas.
+     */
+     int loadLevel1(){      
         nivel = 1;   
         int SecretNumber,tent;
         Scanner sc = new Scanner(System.in);
@@ -118,7 +131,12 @@ public class Oraculo {
         return SecretNumber;
     }
     
-    int loadLevel2(int opcao){
+    /** Após passar pelo level1, o jogador seguirá para
+     * o level2, onde terá que adivinhar se o número é
+     * par ou ímpar, usando a qunatidade de vidas que 
+     * restou do level1.
+     */
+     int loadLevel2(int opcao){
         //fazer um tratamento de erro
         nivel = 2;
         //System.out.println("Nvidas = "+Nvidas);
@@ -201,6 +219,10 @@ public class Oraculo {
     Icon ic6 = new ImageIcon("trofeu.png");
     Icon ic7 = new ImageIcon("game-over.png");
     
+    /** Se o jogador conseguiu passar pelos 2 níveis,
+     * essa função será chamada para informar que ele
+     *  foi o vencedor do jogo.
+     */
     String prologoVencedor(){
         InOut.MsgSemIcone(" ", "--------------  FIM  --------------");
         guerreiro.getNome();
@@ -209,6 +231,10 @@ public class Oraculo {
         return guerreiro.nome;  
     }
        
+    /** Se o jogador não conseguiu passar pelos 2 níveis,
+     * essa função será chamada para informar que ele
+     *  foi o perdedor do jogo.
+     */
     String prologoPerdedor(){
        // InOut.MsgSemIcone(" ", "ENTROU PERDEDOR");
         // System.out.println("miser = "+miser);
@@ -260,6 +286,11 @@ public class Oraculo {
         return null; 
     }
     
+    /** Essa função decidirá se o jogador vai gnaher uma
+     * vida extra ou não. Ela concederá ao jogador uma vida
+     * extra se o pedido de misericórdia tiver 5 ou mais 
+     *  palavras.
+     */
     boolean decidirVidaExtra(String misericordia){
         int contador;
         StringTokenizer dve = new StringTokenizer(pedidoDeM," ");
@@ -275,6 +306,4 @@ public class Oraculo {
         return false;
         
     }
-
-
 }
