@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class Loja {
     
-    // ATRIBUTOS
+    /** Declaração de atributos */
     private int listaPedidos; 
     private boolean aberta;
     int pedidoN;
@@ -23,6 +23,10 @@ public class Loja {
     // o pedido é um produto dentro dele tem que pedir as coisas do produto
     // list no listaPedido
     
+     /**
+     * Função para dar a opção do clinte escolher qual o 
+     * caminho ele quer seguir dentro da loha online.
+     */
     public void menu(){
         System.out.println("------ MENU ------");
         System.out.println("1 - BUSCAR PEDIDO");
@@ -49,6 +53,10 @@ public class Loja {
         
     }
     
+    /**
+     * Função para o cliente inserir pedidos na sua compra.
+     * Ela será chamada se na função menu, ela for escolhida.
+     */
     public void inserirPedido(){
         System.out.println("ENTROU - INSERIR UM PEDIDO");    
                 
@@ -56,22 +64,34 @@ public class Loja {
         
     }
     
+    /**
+     * Função para o cliente buscar seus pedidos na sua compra.
+     * Ela será chamada se na função menu, ela for escolhida.
+     */
     public void buscarPedido(){
         System.out.println("ENTROU - BUSCAR PEDIDO");
     }
     
+    /**
+     * Função para o cliente remover pedidos na sua compra.
+     * Ela será chamada se na função menu, ela for escolhida.
+     */
     public void removerPedido(){
         System.out.println("ENTROU - REMOVER UM PEDIDO");
     }
     
     //---- NOVOS DENTRO DE METODOS DE MANIPULACAO DO PEDIDO ----
 
+    /**
+     * Função que irá ser chamada na hora de finalizar a compra
+     */
     public Pedido getListaPedidos() {
         
         return null;
         
     }
 
+    /** Vai setar a lista de pedidos do cliente.*/
     public void setListaPedidos(Pedido listaPedidos) {
        
     }
