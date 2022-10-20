@@ -101,14 +101,10 @@ public class Funcionario {
     Icon ic = new ImageIcon("funcionario.png");
     
     public void mostraUsuarios(){
-//        InOut.MsgSemIcone(" ", "USUARIOS ENCONTRADOS");
-        //System.out.println("----- USUARIOS ENCONTRADOS -----"); 
         JOptionPane.showMessageDialog (null, loja.usuario.size()+ ": FUNCIONARIOS FORAM ENCONTRADOS","USUARIOS ENCONTRADOS", JOptionPane.INFORMATION_MESSAGE, ic);
-//        System.out.println("USUARIOS " + loja.usuario.size()+ " FORAM ENCONTRADOS");
         int i = 0;
         for (Funcionario f : loja.usuario) {
             JOptionPane.showMessageDialog(null,"FUNCIONARIO [" + i + "] -> NOME: " + f.getNome() + System.lineSeparator() + " SENHA: " + f.getSenha() + System.lineSeparator() +" MATRICULA: " + f.getMatricula(), "USUARIOS ENCONTRADOS", JOptionPane.INFORMATION_MESSAGE, ic);
-//            System.out.println("FUNCIONARIO [" + i + "] -> NOME: " + f.getNome() + " SENHA: " + f.getSenha() + " MATRICULA: " + f.getMatricula());
             i++;
         }  
         // -- ESCOLHA DE VOLTA PARA O MENU --
@@ -116,11 +112,6 @@ public class Funcionario {
         while (volta != 1 || volta != 2) {
             String Entrada = JOptionPane.showInputDialog (null, " 1-SIM ou 2-NAO " , " DESEJA VOLTAR PARA O MENU? ", JOptionPane.QUESTION_MESSAGE);
             volta = Integer.parseInt(Entrada);
-//            volta = JOptionPane.showInputDialog (null, " " , " DESEJA VOLTAR PARA O MENU?    1-SIM ou 2-NAO ", JOptionPane.QUESTION_MESSAGE);
-//            System.out.println("------ DESEJA VOLTAR PARA O MENU ? ------");
-//            System.out.println("---  1-SIM ou 2-NAO  ---");
-//            Scanner ler3 = new Scanner(System.in);
-//            volta = ler3.nextInt();
             
             if(volta==1){
                     loja.menu();
@@ -134,9 +125,6 @@ public class Funcionario {
             else{
                 InOut.MsgDeErro("", "   ERRO   ");
                 InOut.MsgDeInformacao(" ","A OPCAO QUE ESCOLHEU NAO TEM NO SISTEMA");
-//                System.out.println("------ ERRO ------");
-//                System.out.println("A OPCAO QUE ESCOLHEU NAO TEM NO SISTEMA");
-//                System.out.println("------------------");
             }
             
 //            switch (volta) {
