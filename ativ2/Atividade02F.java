@@ -29,6 +29,11 @@ public class Atividade02 {
         
         
     }
+    
+    /**
+     * Função para pegar a data atual
+     * @return  uma string em data
+     */
     public static String data(){
       Date date = new Date();
       SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
