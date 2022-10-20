@@ -6,7 +6,6 @@ public class Loja {
     private Pedido listaPedidos; 
     private int codigoPedido, carrinhoCompras;
     private boolean aberta;
-    // vamos tentar achar uma forma de, no menu, mostrar os produtos que a loja tem
     
     // MÉTODOS PERSONALIZADOS
     public void main (){
