@@ -46,6 +46,10 @@ public class Atividade01 {
         Oraculom.loadLevel1();    
         
     }
+    /** Função para sortear números aleátorios dentro
+     * de um intervalo, que é definido pelos parâmetros
+     * minimo e maximo.
+     */
     public static int aleatorio(int minimo, int maximo){
         Random random = new Random();
         return random.nextInt((maximo - minimo) + 1) + minimo;
